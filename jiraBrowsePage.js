@@ -17,6 +17,7 @@ var draftComment = function (featureReviewURL) {
 
 // Drat comment event handler
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+  console.log('Message received: ' + JSON.stringify(message))
   if (message.action === "featureReviewDraft.start") {
     var featureReviewURL = message.featureReviewURL;
     var draftCommentSuccessful = draftComment(featureReviewURL);

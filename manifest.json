@@ -3,7 +3,7 @@
 
   "name": "ChipIt",
   "description": "Create shipment tracker feature reviews directly on GitHub pull requests",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "background": {
     "scripts": ["background.js"]
   },
