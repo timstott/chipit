@@ -1,34 +1,57 @@
-// Adds a comment on the issue and populates with the feature review URL
-var draftComment = function (featureReviewURL) {
-  var addCommentElem = $('#comment-issue');
-  var commentTextAreaElem = $('#comment-wiki-edit textarea');
-  var submitElem = $('#issue-comment-add-submit');
-
-  addCommentElem.click();
-  commentTextAreaElem.text(featureReviewURL);
-  if (commentTextAreaElem.text() === featureReviewURL) {
-    submitElem.click();
-    return true;
-  } else {
-    console.error("Unable to add a comment with the feature review URL");
-    return false;
-  }
-}
-
-// Drat comment event handler
+/**
+ * Listens to create Jira comment events.
+ * Adds a Jira comment with the feature review URL without submitting it.
+ */
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  console.log('Message received: ' + JSON.stringify(message))
-  if (message.action === "featureReviewDraft.start") {
+  if (message.action === "create_jira_comment") {
     var featureReviewURL = message.featureReviewURL;
-    var draftCommentSuccessful = draftComment(featureReviewURL);
     var response;
 
-    if (draftCommentSuccessful) {
-      response = { action: "featureReviewDraft.success" };
-    } else {
-      response = { action: "featureReviewDraft.failed" };
+    var addCommentNode = $('#comment-issue');
+    var commentTextAreaNode = $('#comment-wiki-edit textarea');
+    var submitCommentNode = $('#issue-comment-add-submit');
+    var commentLinkNodes = $('.activity-comment a');
+
+    // Add all URLs found in comments to a Set
+    var commentsURLs = commentLinkNodes.reduce(function (memo, node) {
+      return memo.add($(node).attr('href'));
+    }, (new Set()))
+
+    if (commentsURLs.has(featureReviewURL)) {
+      sendResponse({
+        action: 'failed_to_create_jira_comment',
+        reason: 'Identical feature review already submitted'
+      });
+      return;
     }
 
-    sendResponse(response);
+    addCommentNode.click();
+    commentTextAreaNode.text(featureReviewURL);
+    if (commentTextAreaNode.text() === featureReviewURL) {
+      sendResponse({
+        action: 'jira_comment_created'
+      });
+    } else {
+      sendResponse({
+        action: 'failed_to_create_jira_comment',
+        reason: 'Failed to create a Jira comment'
+      });
+    }
+  }
+});
+
+/**
+ * Listen to submit Jira comment events
+ */
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+  if (message.action === "submit_jira_comment") {
+    var response;
+
+    var submitCommentNode = $("#issue-comment-add-submit");
+    submitCommentNode.click();
+
+    sendResponse({
+      action: "jira_comment_submitted"
+    });
   }
 });

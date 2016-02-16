@@ -1,23 +1,17 @@
 {
-  "manifest_version": 2,
-
   "name": "ChipIt",
   "description": "Create shipment tracker feature reviews directly on GitHub pull requests",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "homepage_url": "https://github.com/timstott/chipit",
   "background": {
     "scripts": ["background.js"]
-  },
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_title": "ChipIt",
-    "default_popup": "popup.html"
   },
   "content_scripts" :[
     {
       "matches": [
         "https://github.com/*/*/pull/*"
       ],
-      "js": ["zepto.js", "pr.js"]
+      "js": ["zepto.js", "githubPR.js"]
     },
     {
       "matches": [
@@ -27,7 +21,7 @@
     }
   ],
   "permissions": [
-    "tabs",
-    "https://ajax.googleapis.com/"
-  ]
+    "tabs"
+  ],
+  "manifest_version": 2
 }

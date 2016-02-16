@@ -1,6 +1,9 @@
 # Chip It!
+Create shipment tracker feature reviews directly on GitHub pull requests.
 
-Use Jira ticket 
+The Jira ticket reference must be included at the start of commit messages.
+
+Consult [CHANGELOG](CHANGELOG.md) for latest additions.
 
 ## Setup
 
@@ -10,6 +13,4 @@ Use Jira ticket
 
 ## Roadmap
 
-- Confirm shipment
-- Close Jira window on Confirmation
 - Make it beautiful ✨
