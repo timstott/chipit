@@ -52,7 +52,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
  * Trigger GitHub pull request page analysis
  */
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-  var GITHUB_PULL_REQUEST_URL = /^https:\/\/github\.com\/.+\/.+\/pull\/\d+\/?$/
+  var GITHUB_PULL_REQUEST_URL = /^https:\/\/github\.com\/FundingCircle\/.+\/pull\/\d+\/?$/i
 
   if (tab.url.match(GITHUB_PULL_REQUEST_URL)) {
     chrome.tabs.sendMessage(tabId, {

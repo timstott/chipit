@@ -14,4 +14,5 @@ Consult [CHANGELOG](CHANGELOG.md) for latest additions.
 
 ## Roadmap
 
+- Update available notification
 - Make it beautiful ✨
