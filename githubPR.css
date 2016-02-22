@@ -1,0 +1,32 @@
+div#chipit div.merge-message {
+    background: none;
+    border: none;
+}
+
+.chipit-action-link {
+    margin-right: 10px;
+}
+
+.chipit-message {
+    padding: 3px;
+}
+.chipit-error {
+    color: whitesmoke;
+    background: red;
+}
+
+.chipit-confirm {
+    color: green;
+}
+
+.chipit-ticket-container {
+    border-bottom: solid 1px #f3f3f3;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.chipit-ticket-container:last-child {
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
