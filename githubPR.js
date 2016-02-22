@@ -22,8 +22,6 @@ var LOGGER = (function () {
   }
 })();
 
-
-// Extract references from commit mess
 /**
  * Listen to GitHub pull request page analysis events
  */
