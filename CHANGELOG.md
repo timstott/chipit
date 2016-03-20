@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.0.5
+
+### Fixed
+- Close Jira tab when chipment is confirmed
+
+### Changed
+- Create link with Jira markup when creating comment
+
 ## 0.0.4
 
 ### Added

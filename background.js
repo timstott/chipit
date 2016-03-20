@@ -42,7 +42,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
       } else if (response.action === "jira_comment_submitted") {
         sendResponse(response);
       }
-      chrome.tabs.remove(jiraTabId);
+      chrome.tabs.remove(message.jiraTabId);
     });
     // Return true to indicate response is sent async
     return true;

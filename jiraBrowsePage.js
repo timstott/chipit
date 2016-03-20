@@ -11,6 +11,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     var commentTextAreaNode = $('#comment-wiki-edit textarea');
     var submitCommentNode = $('#issue-comment-add-submit');
     var commentLinkNodes = $('.activity-comment a');
+    var comment = "[Feature ready for review|" + featureReviewURL + "]";
 
     // Add all URLs found in comments to a Set
     var commentsURLs = commentLinkNodes.reduce(function (memo, node) {
@@ -26,8 +27,8 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     }
 
     addCommentNode.click();
-    commentTextAreaNode.text(featureReviewURL);
-    if (commentTextAreaNode.text() === featureReviewURL) {
+    commentTextAreaNode.text(comment);
+    if (commentTextAreaNode.text() === comment) {
       sendResponse({
         action: 'jira_comment_created'
       });
