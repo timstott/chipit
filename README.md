@@ -1,7 +1,12 @@
 # Chip It!
-Create shipment tracker feature reviews directly on GitHub pull requests.
+Creates shipment tracker feature reviews based on commit messages, from GitHub pull requests.
 
-The Jira ticket reference must be included at the start of commit messages.
+The Jira ticket reference must be included at the start of commit messages. Supported patterns:
+
+- `[ENGE-123] Hello World`
+- `ENGE-123: Hello World`
+- `ENGE-123 Hello World`
+
 
 Consult [CHANGELOG](CHANGELOG.md) for latest additions.
 
