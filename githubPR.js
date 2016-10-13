@@ -58,10 +58,11 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     });
 
     findLatestFeatureReviewURL.then(function(result){
-      var commitMessagesNodes = $('td.commit-message a');
+      var candidateTicketReferenceNodes = $('td.commit-message a, .current-branch.head-ref');
       var featureReviewURL = result.featureReviewURL;
 
-      var ticketReferences = commitMessagesNodes.reduce(function (acc, node) {
+      debugger
+      var ticketReferences = candidateTicketReferenceNodes.reduce(function (acc, node) {
         var TICKET_REFERENCE = /^\[?([A-Z]+-\d+)\]?/;
         var matches = node.text.match(TICKET_REFERENCE);
         // Get the first matching group only
@@ -75,7 +76,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
       }, []);
 
       if (ticketReferences.length === 0) {
-        LOGGER.info("No ticket reference found in commit messages!")
+        LOGGER.info("No ticket reference found!")
         return false;
       }
 

@@ -1,7 +1,8 @@
 # Chip It!
 Creates shipment tracker feature reviews based on commit messages, from GitHub pull requests.
 
-The Jira ticket reference must be included at the start of commit messages. Supported patterns:
+The Jira ticket reference must be included at the start of commit messages or
+branch name. Supported patterns:
 
 - `[ENGE-123] Hello World`
 - `ENGE-123: Hello World`
