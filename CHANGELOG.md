@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.6
+
+### Fixed
+- Update to latest GitHub selector for feature review link
+
 ## 0.0.5
 
 ### Fixed

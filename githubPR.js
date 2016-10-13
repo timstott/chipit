@@ -3,7 +3,8 @@ var shipItSquirrelNode = $('<img class="emoji" title=":shipit:" alt=":shipit:" s
 
 var LOGGER = (function () {
   var log = function(level, msg) {
-    console.log(level + " " + (new Date().toISOString()) + ": " + msg)
+    const time = new Date().toISOString();
+    console.log(`[ChipIt] ${level} ${time}: ${msg}`);
   }
   return {
     level: 7,
@@ -32,7 +33,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
       var retry = 5;
       var find = function (retryCount) {
         setTimeout(function () {
-          var trackerLinkNodes = $('.build-statuses-list .build-status-item a[href*="feature_reviews"]');
+          var trackerLinkNodes = $('.merge-status-list .merge-status-item a[href*="feature_reviews"]');
           var featureReviewURL = trackerLinkNodes.last().attr("href");
 
           if (featureReviewURL) {
