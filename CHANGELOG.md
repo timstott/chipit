@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.7
+
+### Added
+- Inspect branch name for ticket reference
+
 ## 0.0.6
 
 ### Fixed
